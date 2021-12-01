@@ -19,17 +19,17 @@ RSpec.describe "GET/api/articles/:id" do
         end
     end
 
-    describe "unsuccessfully with invalid id" do
-        before do
-            get "api/articles/abc"
-        end
+    # describe "unsuccessfully with invalid id" do
+    #     before do
+    #         get "api/articles/abc"
+    #     end
 
-        it "is expected to return a 404 status" do
-        expect(response).to have_http_status 404
-        end
+    #     it "is expected to return a 404 status" do
+    #     expect(response).to have_http_status 404
+    #     end
 
-        it "is expected to return an error message" do
-            expect(response_json['message']).to eq "Unfortunately we can not find the article you are looking for"
-        end
-    end
+    #     it "is expected to return an error message" do
+    #         expect(response_json['message']).to eq "Unfortunately we can not find the article you are looking for"
+    #     end
+    # end
 end

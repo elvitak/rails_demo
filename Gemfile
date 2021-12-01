@@ -20,3 +20,5 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
 end
+
+gem 'solargraph', group: :development
