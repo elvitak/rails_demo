@@ -1,4 +1,5 @@
 class Api::ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
   before_action :validate_params_presence, only: :create
   def index
     articles = Article.all
@@ -15,16 +16,14 @@ class Api::ArticlesController < ApplicationController
     if article.persisted?
       render json: { article: article }, status: 201
     else
-      render json: { message: article.errors.full_messages.to_sentence }
+      render json: { message: article.errors.full_messages.to_sentence }, status: 422
     end
   end
 
   private
 
   def validate_params_presence
-    if params[:article].nil?
-      render json: { message: 'Missing params' }, status: 422
-    end
+    render json: { message: 'Missing params' }, status: 422 if params[:article].nil?
   end
 
   def article_params
