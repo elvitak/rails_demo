@@ -5,7 +5,6 @@ class CreateArticles < ActiveRecord::Migration[6.1]
       t.text :content
 
       t.timestamps
-      create_column :articles, :body, :text
     end
   end
 end
